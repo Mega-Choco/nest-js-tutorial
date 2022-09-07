@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "nest build && tsc-alias",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -19,7 +19,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "node -r tsconfig-paths/register -r ts-node/register ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -28,10 +28,12 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^9.0.1",
     "dotenv": "^16.0.2",
+    "module-alias": "^2.2.2",
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
+    "tsc-alias": "^1.7.0",
     "typeorm": "^0.3.9",
     "webpack": "^5.74.0"
   },

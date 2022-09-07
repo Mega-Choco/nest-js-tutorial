@@ -15,4 +15,10 @@ export class User {
 
     @Column()
     public country: string;
+
+    @Column()
+    public bornIn: string;
+
+    @Column({nullable:true})
+    public age:number;
 }
