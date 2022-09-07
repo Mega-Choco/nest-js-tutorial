@@ -19,6 +19,7 @@ constructor(
     }
     @Post()
     async create(@Body() model:User){
+        await this.userRepository.addUser(model);
         return;
     }
 }

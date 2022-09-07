@@ -13,5 +13,13 @@ export class UserRepository extends Repository<User>{
     }
 
     async findByName(tartgetName:string):Promise<User|undefined>{
-        return await this.createQueryBuilder("user").where('user.name = :tartgetName',{tartgetName}).getOne();    }
+        return await this.createQueryBuilder("user").where('user.name = :tartgetName',{tartgetName}).getOne();    
+    }
+
+    async addUser(model:User):Promise<void>{
+        await this.createQueryBuilder("user").insert()
+        .into(User)
+        .values(model).execute();
+        return;
+    }
 }
